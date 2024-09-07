@@ -1,13 +1,12 @@
 {
   "books": [
     {
+      "id": 1,
       "name": "Slow Horses (Deluxe Edition)",
       "author": "Mick Herron",
-      "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
       "price": 14,
-      "rating": 3,
-      "featured": false,
-      "id": 1
+      "rating": "4",
+      "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg"
     },
     {
       "name": "The Last Thing He Told Me: A Novel",
@@ -28,22 +27,20 @@
       "id": 4
     },
     {
+      "id": 1725727682536,
       "name": "Harry Potter and the Goblet of Fire",
       "author": "J. R. R. Tolkien",
-      "thumbnail": "https://covers.openlibrary.org/b/id/12775900-M.jpg",
       "price": 29.99,
-      "rating": 3,
-      "featured": false,
-      "id": 1725727682536
+      "rating": "4",
+      "thumbnail": "https://covers.openlibrary.org/b/id/12775900-M.jpg"
     },
     {
+      "id": 1725727809408,
       "name": "The Name of the Wind",
       "author": "Patrick Rothfuss",
-      "thumbnail": "https://covers.openlibrary.org/b/id/6282709-M.jpg",
-      "price": 18.99,
-      "rating": 3,
-      "featured": true,
-      "id": 1725727809408
+      "price": "18.90",
+      "rating": "4",
+      "thumbnail": "https://covers.openlibrary.org/b/id/6282709-M.jpg"
     }
   ]
 }

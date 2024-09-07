@@ -1,11 +1,30 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import deleteBook from "../redux/books/thunk/deleteBook";
+import updateBook from "../redux/books/thunk/updateBook";
+import UpdateBookModal from "./UpdateBookModal";
+// Import the modal
 
 const BookCard = ({ book }) => {
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false); // Control modal state
+  const [selectedBook, setSelectedBook] = useState(null); // Store selected book data
 
+  // Handle delete book
   const handleDelete = () => {
     dispatch(deleteBook(book.id));
+  };
+
+  // Open the modal with the selected book data
+  const handleEdit = () => {
+    setSelectedBook(book); // Set the book to edit
+    setIsModalOpen(true); // Open the modal
+  };
+
+  // Handle update book (after modal submits)
+  const handleUpdate = (updatedBook) => {
+    dispatch(updateBook(updatedBook)); // Dispatch the update thunk
+    setIsModalOpen(false); // Close modal after update
   };
 
   return (
@@ -21,7 +40,8 @@ const BookCard = ({ book }) => {
             <span className="badge-success lws-Badge">featured</span>
           )}
           <div className="text-gray-500 space-x-2">
-            <button className="lws-edit">
+            {/* Edit button to open the modal */}
+            <button className="lws-edit" onClick={handleEdit}>
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
@@ -36,6 +56,7 @@ const BookCard = ({ book }) => {
                 />
               </svg>
             </button>
+            {/* Delete button */}
             <button className="lws-delete" onClick={handleDelete}>
               <svg
                 fill="none"
@@ -78,6 +99,15 @@ const BookCard = ({ book }) => {
           <p className="lws-price">BDT {book.price}</p>
         </div>
       </div>
+
+      {/* Render the UpdateBookModal when the modal state is true */}
+      {isModalOpen && (
+        <UpdateBookModal
+          book={selectedBook}
+          onUpdate={handleUpdate} // Pass the handleUpdate function
+          onClose={() => setIsModalOpen(false)} // Close the modal
+        />
+      )}
     </div>
   );
 };
