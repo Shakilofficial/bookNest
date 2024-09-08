@@ -1,17 +1,32 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBooks from "../redux/books/thunk/fetchBooks";
+import { setFilter } from "../redux/filters/actions";
 import BookCard from "./BookCard";
 
 const BookList = () => {
   const dispatch = useDispatch();
 
-  // Get books from the Redux store
+  // Get books and filter from the Redux store
   const books = useSelector((state) => state.books);
+  const filter = useSelector((state) => state.filter.filter);
 
   useEffect(() => {
     dispatch(fetchBooks()); // Fetch books on component mount
   }, [dispatch]);
+
+  // Handle filter change
+  const handleFilterClick = (filterType) => {
+    dispatch(setFilter(filterType)); // Dispatch the filter action
+  };
+
+  // Filter the books based on the active filter
+  const filteredBooks = books.filter((book) => {
+    if (filter === "featured") {
+      return book.featured === true; // Show only featured books
+    }
+    return true; // Show all books when filter is 'all'
+  });
 
   return (
     <div className="order-2 xl:-order-1">
@@ -19,23 +34,33 @@ const BookList = () => {
         <h4 className="mt-2 text-xl font-bold">Book List</h4>
 
         <div className="flex items-center space-x-4">
-          <button className="filter-btn active-filter" id="lws-filterAll">
+          <button
+            className={`filter-btn ${filter === "all" ? "active-filter" : ""}`}
+            id="lws-filterAll"
+            onClick={() => handleFilterClick("all")}
+          >
             All
           </button>
-          <button className="filter-btn" id="lws-filterFeatured">
+          <button
+            className={`filter-btn ${
+              filter === "featured" ? "active-filter" : ""
+            }`}
+            id="lws-filterFeatured"
+            onClick={() => handleFilterClick("featured")}
+          >
             Featured
           </button>
         </div>
       </div>
 
       <div className="lws-bookContainer">
-        {/* Render Book Cards */}
-        {books.length > 0 ? (
-          books.map((book) => <BookCard book={book} key={book.id} />)
+        {/* Render Filtered Book Cards */}
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map((book) => <BookCard book={book} key={book.id} />)
         ) : (
           <p>No books available</p>
         )}
-      </div> 
+      </div>
     </div>
   );
 };
