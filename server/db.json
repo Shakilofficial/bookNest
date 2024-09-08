@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Slow Horses (Deluxe Edition)",
       "author": "Mick Herron",
-      "price": 14,
+      "price": "19",
       "rating": "4",
       "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg"
     },
@@ -51,6 +51,24 @@
       "rating": 2,
       "featured": true,
       "id": 1725777033546
+    },
+    {
+      "name": "Great Gatsby (Silver Screen Edition)",
+      "author": "F. Scott Fitzgerald",
+      "thumbnail": "https://covers.openlibrary.org/b/id/12791857-M.jpg",
+      "price": 20,
+      "rating": 5,
+      "featured": true,
+      "id": 1725779508242
+    },
+    {
+      "name": "Harry Potter and the Order of the Phoenix",
+      "author": "J. K. Rowling",
+      "thumbnail": "https://covers.openlibrary.org/b/id/11416565-M.jpg",
+      "price": 27,
+      "rating": 3,
+      "featured": false,
+      "id": 1725779625801
     }
   ]
 }

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import deleteBook from "../redux/books/thunk/deleteBook";
@@ -110,6 +111,20 @@ const BookCard = ({ book }) => {
       )}
     </div>
   );
+};
+
+// Prop validation
+BookCard.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    name: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    featured: PropTypes.bool,
+  }).isRequired,
 };
 
 export default BookCard;

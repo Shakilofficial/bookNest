@@ -1,12 +1,12 @@
-import { SET_FILTER } from "./actionTypes";
+import { SEARCH_BY_NAME } from "./actionTypes";
 import { initialState } from "./initialState";
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_FILTER:
+    case SEARCH_BY_NAME:
       return {
         ...state,
-        filter: action.payload,
+        searchName: action.payload,
       };
     default:
       return state;

@@ -1,4 +1,13 @@
+import { useDispatch } from "react-redux";
+import { searchByName } from "../redux/searches/actions";
+
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const handleSearchChange = (e) => {
+    dispatch(searchByName(e.target.value));
+  };
+
   return (
     <nav className="py-4 2xl:px-6 bg-gray-100">
       <div className="container flex items-center justify-between">
@@ -9,13 +18,11 @@ const Navbar = () => {
           className="object-contain"
           alt="Logo"
         />
-
         <ul className="hidden md:flex items-center space-x-6">
           <li className="font-semibold cursor-pointer">Book Store</li>
           <li className="cursor-pointer">Wishlist</li>
           <li className="cursor-pointer">My Collection</li>
         </ul>
-
         <form className="flex items-center">
           <div className="group relative rounded-md bg-white">
             <svg
@@ -35,6 +42,7 @@ const Navbar = () => {
               placeholder="Filter books..."
               className="search"
               id="lws-searchBook"
+              onChange={handleSearchChange}
             />
           </div>
         </form>

@@ -7,9 +7,10 @@ import BookCard from "./BookCard";
 const BookList = () => {
   const dispatch = useDispatch();
 
-  // Get books and filter from the Redux store
+  // Get books, filter, and search term from the Redux store
   const books = useSelector((state) => state.books);
   const filter = useSelector((state) => state.filter.filter);
+  const searchName = useSelector((state) => state.search.searchName);
 
   useEffect(() => {
     dispatch(fetchBooks()); // Fetch books on component mount
@@ -20,13 +21,20 @@ const BookList = () => {
     dispatch(setFilter(filterType)); // Dispatch the filter action
   };
 
-  // Filter the books based on the active filter
-  const filteredBooks = books.filter((book) => {
-    if (filter === "featured") {
-      return book.featured === true; // Show only featured books
-    }
-    return true; // Show all books when filter is 'all'
-  });
+  // Filter the books based on the active filter and search term
+  const filteredBooks = books
+    .filter((book) => {
+      if (filter === "featured") {
+        return book.featured === true; // Show only featured books
+      }
+      return true; // Show all books when filter is 'all'
+    })
+    .filter((book) => {
+      if (searchName) {
+        return book.name.toLowerCase().includes(searchName.toLowerCase());
+      }
+      return true; // Show all books when searchName is empty
+    });
 
   return (
     <div className="order-2 xl:-order-1">

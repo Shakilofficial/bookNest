@@ -1,4 +1,5 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 export default function UpdateBookModal({ book, onUpdate, onClose }) {
@@ -110,3 +111,18 @@ export default function UpdateBookModal({ book, onUpdate, onClose }) {
     </Dialog>
   );
 }
+
+// Prop validation
+UpdateBookModal.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    name: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
