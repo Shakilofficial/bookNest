@@ -1,5 +1,4 @@
-[Cover Image](/src/assets/Cover.png)
-
+[Cover Image](https://github.com/Shakilofficial/bookNest/blob/main/src/assets/Cover.png)
 # Book Management App (BookNest)
 
 ## Description
