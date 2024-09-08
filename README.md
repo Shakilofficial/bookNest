@@ -1,3 +1,5 @@
+[Cover Image](/src/assets/Cover.png)
+
 # Book Management App (BookNest)
 
 ## Description
