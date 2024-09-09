@@ -66,7 +66,7 @@ npm install
 npm start
 ```
 
-The JSON server will be running on http://localhost:9000.
+- The JSON server will be running on http://localhost:9000.
 
 ### Contributing
 
